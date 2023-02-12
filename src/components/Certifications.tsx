@@ -5,6 +5,11 @@ import Header from "./sub-components/Header";
 
 import Refs from "../Refs"; 
 
+import jpf from '../assets/jpf.png'
+import itil from '../assets/itil.png'
+import aws from '../assets/aws.png'
+
+
 export default function () {
     const language = useContext(LanguageContext);
 	
@@ -35,7 +40,7 @@ export default function () {
 						new Content("JLPT N2", "日本語能力試験N2")[language],
 						new Content("August 2022", "2022年8月")[language],
 						new Content("The Japan Foundation", "国際交流基金")[language],
-						"src/assets/jpf.png",
+						jpf,
 						""
 					)
 				}
@@ -44,7 +49,7 @@ export default function () {
 						new Content("AWS Certified Solutions Architect - Associate", "AWS 認定ソリューションアーキテクト – アソシエイト")[language],
 						new Content("In Progress", "発行日：不明")[language],
 						new Content("Amazon", "Amazon")[language],
-						"src/assets/aws.png",
+						aws,
 						""
 					)
 				}
@@ -53,7 +58,7 @@ export default function () {
 						new Content("ITIL® 4 Foundation Course", "ITIL® 4 基礎コース")[language],
 						new Content("November 2021", "2021年11月")[language],
 						new Content("ITSM Hub", "ITSM Hub")[language],
-						"src/assets/itil.png",
+						itil,
 						"https://www.credly.com/badges/25d58a48-b216-4d7c-a38a-370da953fae9?source=linked_in_profile"
 					)
 				}

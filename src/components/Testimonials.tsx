@@ -4,6 +4,9 @@ import LanguageContext from "./Context/LanguageContext";
 import Header from "./sub-components/Header";
 import Refs from "../Refs";
 
+import vee from '../assets/vee.jfif'
+import kaye from '../assets/kaye.jfif'
+import kay from '../assets/kay.webp'
 interface ITestimonial {
     avatar: string,
     name: string,
@@ -33,7 +36,7 @@ export default function () {
 
     const Testimonials = [
         {
-            avatar:'https://media.licdn.com/dms/image/C5603AQHOjM_Fhts5kA/profile-displayphoto-shrink_200_200/0/1637127103177?e=1681344000&v=beta&t=PiQJ-A5FfoLBltDy15ePyrU0ujC-fUnSbNOpkQpfAXU',
+            avatar:vee,
             name:'Vee Ferreira',
             position: new Content('Team Leader - USQHub (UniSQ)', 'チームリーダー - USQHub (サザンクイーンズランド大学)')[language],
             content:[
@@ -58,7 +61,7 @@ export default function () {
             ]
         },
         {
-            avatar:'https://media.licdn.com/dms/image/C4D03AQEcZ-tddIuXrg/profile-displayphoto-shrink_200_200/0/1517368071877?e=1681344000&v=beta&t=c76Lp9Q6ODANw2kwRMtIvV9qMfVHmLBuQe1G0w70PRo',
+            avatar:kaye,
             name:'Kaye England',
             position:'Manager - Enterprise Information Management Services (UniSQ)',
             content:[
@@ -70,7 +73,7 @@ export default function () {
             ]
         },
         {
-            avatar:'https://static.wixstatic.com/media/39c2b9_1afa362342c3438b86c25ad09f144be3~mv2.jpg/v1/fill/w_264,h_264,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/Kay_Profile.jpg',
+            avatar:kay,
             name:'Kay Graham',
             position:'ICT Support Officer - Client Services (UniSQ)',
             content:[
@@ -94,7 +97,6 @@ export default function () {
                     key={'testimonial-button-'+index}
                     onClick={()=>setActive(index)} 
                     className={`border border-neutral-700 rounded-full p-1.5 ${active==index?"bg-neutral-700":""}`} />
-
                 )})
             }
 
