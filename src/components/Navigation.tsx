@@ -16,7 +16,6 @@ export default function () {
 	useEffect(() => {
 		const handleScroll = (event: any) => {
 			setShowNav(scrolltop > document.documentElement.scrollTop)
-			console.debug(scrolltop > document.documentElement.scrollTop)
 			scrolltop = document.documentElement.scrollTop;
 		};
 	  
@@ -29,7 +28,7 @@ export default function () {
 	}, [])
 
     return (
-        <nav className={`${showNav ? 'top-0' : '-top-[100%]'} sticky md:flex w-full h-[5vh] bg-neutral-700 drop-shadow-lg z-10 transition-all`}>
+        <nav className={`${showNav ? 'top-0' : '-top-[100%]'} sticky hidden md:flex w-full h-[5vh] bg-neutral-700 drop-shadow-lg z-10 transition-all`}>
 			<div className='max-w-[1024px] mx-auto px-4 w-full flex items-center justify-between text-lg relative'>
 				<span className='text-2xl font-semibold'>
 				<h1> {new Content("Tristan Muggridge", "マグリジ・トリスタン")[language]} </h1>
