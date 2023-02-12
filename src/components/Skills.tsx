@@ -55,7 +55,7 @@ export default function () {
             </button>
         </div>
         
-        <div className='transition-all -translate-x-[100vw] flex justify-center flex-wrap mt-8 gap-1'>
+        <div className='transition-all flex justify-center flex-wrap mt-8 gap-1'>
         {
             [
                     {name: "JavaScript", image: JavaScript, tags: ["front", "back"]},

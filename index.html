@@ -9,5 +9,13 @@
   <body style="background-color: #4A4A4A;">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+      (function(){
+          emailjs.init("R0o787fR03PiaIMB3"); // it's a public key, relax
+      })();
+    </script>
   </body>
 </html>

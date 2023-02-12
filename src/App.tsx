@@ -46,23 +46,25 @@ export default function () {
 
 		let options = {
 			rootMargin: '0px',
-			threshold: 0.4
+			threshold: 0.1
 		}
 
 		let observer = new IntersectionObserver(callback, options);
 
 		refs.forEach((ref, index) => {
 			const element = ref?.current as unknown as Element
+			if (element && element.children) {
+				
+				element.children[element.children.length-1].classList.add("duration-500")
 			
-			element.children[element.children.length-1].classList.add("duration-500")
-			
-			index < refs.length-1 
-				? element.children[element.children.length-1].classList.add( index%2==0? "translate-x-[100vw]":"-translate-x-[100vw]")
-				: element.children[element.children.length-1].classList.add( "translate-y-[100vw]")
+				index < refs.length-1 
+					? element.children[element.children.length-1].classList.add( index%2==0? "translate-x-[100vw]":"-translate-x-[100vw]")
+					: element.children[element.children.length-1].classList.add( "translate-y-[100vw]")
 
-			element.children[element.children.length-1].classList.add("blur-2xl")
+				element.children[element.children.length-1].classList.add("blur-2xl")
 
-			observer.observe(element);
+				observer.observe(element);
+			}
 		})
 	}, [])
 	
@@ -71,7 +73,7 @@ export default function () {
 		<div className="App text-neutral-300 font-Shippori bg-neutral-700">
 			<LanguageContext.Provider value={displayLanguage}>
 				<Navigation />
-				<main className='max-w-[1024px] mx-auto overflow-y-hidden'>
+				<main className='max-w-[1024px] mx-auto overflow-hidden'>
 					<About />
 					<Certifications />
 					<Skills />

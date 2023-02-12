@@ -89,7 +89,7 @@ export default function () {
     return (
     <section ref={Refs.testimonials} className='w-full px-4'>
         <Header content={new Content("Testimonials", "表彰状")[language]}/>
-        <div className="relative flex flex-col gap-2 bg-neutral-700 transition-all -translate-x-[100vw]">
+        <div className="relative flex flex-col gap-2 bg-neutral-700 transition-all">
             <div className="absolute flex flex-row justify-center items-end z-10 mt-4 gap-1 w-full">            
             {
                 Testimonials.map((card, index: number) => { return (

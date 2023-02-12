@@ -34,7 +34,7 @@ export default function () {
         <section ref={Refs.certifications}>
 			<Header content={new Content("Certifications", "資格")[language]} />
 
-			<div className='transition-all flex flex-row justify-evenly flex-wrap gap-4 px-4 translate-x-[100vw]'>
+			<div className='transition-all flex flex-row justify-evenly flex-wrap gap-4 px-4'>
 				{
 					Certification(
 						new Content("JLPT N2", "日本語能力試験N2")[language],
