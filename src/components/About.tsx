@@ -14,7 +14,7 @@ export default function () {
             <div className='flex flex-col gap-2'>
                 <p> { new Content("Hi, my name is", "我が名は")[language] } </p>
                 <h2 className={`text-4xl md:text-6xl self-start font-semibold ${accent[language]}`} > { new Content("Tristan Muggridge", "マグリジ トリスタン")[language] } </h2>
-                <h4 className='text-2xl md:text-5xl opacity-70'> { new Content("I bring dreams to life through code", "発展で夢がお叶いしています")[language] } </h4>
+                <h4 className='text-2xl md:text-5xl opacity-70'> { new Content("I bring dreams to life through code", "私はコードと共に歩き夢を叶えます")[language] } </h4>
 
                 <p className='opacity-60 max-w-[30rem]'>
                     { 
