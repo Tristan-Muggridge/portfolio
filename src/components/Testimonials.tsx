@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import Content from "../classes/Content"
 import LanguageContext from "./Context/LanguageContext";
 import Header from "./sub-components/Header";
@@ -14,25 +14,13 @@ interface ITestimonial {
     content: string[]
 }
 
-const Testimonial = ({avatar, name, position, content}:ITestimonial) => {
-    return (
-        <div className='relative left-1/2 -translate-x-1/2 flex flex-col gap-4 w-full'>
-            <div className='mx-auto max-w-4xl p-6 rounded-md bg-neutral-300 text-neutral-700 flex flex-col gap-2'>
-                <img className="my-8 outline outline-neutral-700 drop-shadow-md mx-auto h-40 w-auto rounded-full" src={avatar} alt="" />
-                <h3 className='font-semibold text-center text-2xl'>{name}</h3>
-                <h5 className='font-semibold text-center'>{position}</h5>
-                {
-                    content.map(string => <p className='text-center'>{string}</p>)
-                }
-            </div>
-        </div>
-    )
-}
+let lastMouseX = 0;
 
 export default function () {
-    const language = useContext(LanguageContext);
     
+    const language = useContext(LanguageContext);
     const [active, setActive] = useState(0);
+    const testimonial: any = useRef(null);
 
     const Testimonials = [
         {
@@ -86,20 +74,70 @@ export default function () {
         }
     ]
 
+    useEffect(()=> {
+    }, [])
+
+    const move = (e: any) => {
+        var x = !e.touches ? e.pageX : e.touches[0].pageX;
+        testimonial.current.style.left = (x + (testimonial.current.clientWidth*-1/2))+'px';
+    }
+
+
+    const handleSwipeStart = (e: any) => {
+       document.addEventListener("touchmove", move)
+    }
+
+    const handleSwipeEnd = (e: any) => {
+        if (window.getSelection()?.toString()) return null;
+        if (lastMouseX == e.changedTouches[0].clientX) incrementActive();
+        lastMouseX > e.changedTouches[0].clientX ? incrementActive() : decrementActive()
+
+        document.removeEventListener("touchmove", move)
+        testimonial.current.style = 0+'px';    
+    }
+
+    const handleClick = (e: any) => {
+        if (window.getSelection()?.toString() != "") return null;
+        incrementActive();
+        window.getSelection()?.removeAllRanges()
+    }
+
+    const decrementActive = () => setActive(active == 0 ? Testimonials.length-1 : active-1)
+    const incrementActive = () => setActive(active < Testimonials.length-1 ? active+1 : 0)
+
+    const Testimonial = ({avatar, name, position, content}:ITestimonial) => {
+        return (
+            // <div ref={testimonial} className='relative mx-auto max-w-4xl p-6 rounded-md bg-neutral-300 text-neutral-700 flex flex-col gap-2' onMouseUp={handleClick} onTouchStart={handleSwipeStart} onTouchEnd={handleSwipeEnd}>
+            <div ref={testimonial} 
+            className='relative mx-auto max-w-4xl p-6 rounded-md bg-neutral-300 text-neutral-700 flex flex-col gap-2' 
+            >
+                <img className="select-none my-8 outline outline-neutral-700 drop-shadow-md mx-auto h-40 w-auto rounded-full" src={avatar} alt="" />
+                <h3 onClick={()=>{}} className='font-semibold text-center text-2xl'>{name}</h3>
+                <h5 onClick={()=>{}} className='font-semibold text-center'>{position}</h5>
+                {
+                    content.map((string, index) => <p key={index} onClick={()=>{}} className='text-center'>{string}</p>)
+                }
+            </div>
+        )
+    }
+
     return (
     <section ref={Refs.testimonials} className='w-full px-4'>
         <Header content={new Content("Testimonials", "表彰状")[language]}/>
-        <div className="relative flex flex-col gap-2 bg-neutral-700 transition-all">
-            <div className="absolute flex flex-row justify-center items-end z-10 mt-4 gap-1 w-full">            
+        <div className="relative flex flex-col gap-2 bg-neutral-700 transition-all"
+        onMouseUp={handleClick} 
+        onTouchStart={handleSwipeStart} 
+        onTouchEnd={handleSwipeEnd}>
+            <div className="absolute flex flex-row justify-center items-end z-10 mt-4 gap-1 w-full">
             {
                 Testimonials.map((card, index: number) => { return (
                     <button
-                    key={'testimonial-button-'+index}
-                    onClick={()=>setActive(index)} 
-                    className={`border border-neutral-700 rounded-full p-1.5 ${active==index?"bg-neutral-700":""}`} />
+                    key={'testimonial-button-'+index} 
+                    className={`border border-neutral-700 rounded-full p-1.5 ${active==index?"bg-neutral-700":""}`}
+                    onClick={()=>setActive(index)}
+                    />
                 )})
             }
-
             </div>
             {
                 Testimonial(Testimonials[active])
