@@ -71,14 +71,14 @@ export default function () {
                     {name: "MongoDB", image: MongoDB, tags: ["back"]},
                     {name: "PostgreSQL", image: PostgreSQL, tags: ["back"]},
                     {name: "Prisma", image: Prisma	, tags: ["back"]},
-                    {name: "AWS", image: AWS, tags: ["back"]},
-                    {name: "Graphql", image: Graphql, tags: ["back"]},
-                    {name: "Jest", image: Jest, tags: ["back"]},
+                    // {name: "AWS", image: AWS, tags: ["back"]},
+                    // {name: "Graphql", image: Graphql, tags: ["back"]},
+                    // {name: "Jest", image: Jest, tags: ["back"]},
                     {name: "VisualStudio", image: VisualStudio, tags: []},
                     {name: "Python", image: Python, tags: ["back"]},
             ].filter( skill => skillFilter.length > 0 ? skillFilter.includes(skill.tags[0]) : true ).map( skill => {
                 return (
-                    <div className='w-auto inline-block relative p-6 rounded-md bg-neutral-300 text-neutral-700'>
+                    <div key={skill.name+'-skillcard'} className='w-auto inline-block relative p-6 rounded-md bg-neutral-300 text-neutral-700'>
                         <img className="h-24 w-full rounded-md" src={skill.image} alt="" />
                         <h3 className='font-semibold text-center'>{skill.name}</h3>
                     </div>
