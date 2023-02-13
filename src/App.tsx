@@ -34,9 +34,9 @@ export default function () {
 			entries.forEach((entry: any) => {
 				if (entry.isIntersecting) {
 					if (entry.target.children.length > 0) {
-						entry.target.children[entry.target.children.length-1].classList.remove("translate-x-[100vw]")
-						entry.target.children[entry.target.children.length-1].classList.remove("-translate-x-[100vw]")
-						entry.target.children[entry.target.children.length-1].classList.remove("translate-y-[100vw]")
+						entry.target.children[entry.target.children.length-1].classList.remove("translate-x-[100%]")
+						entry.target.children[entry.target.children.length-1].classList.remove("-translate-x-[100%]")
+						entry.target.children[entry.target.children.length-1].classList.remove("translate-y-[100%]")
 						entry.target.children[entry.target.children.length-1].classList.remove("blur-2xl")
 					}
 
@@ -46,7 +46,7 @@ export default function () {
 
 		let options = {
 			rootMargin: '0px',
-			threshold: 0.1
+			threshold: 0.6
 		}
 
 		let observer = new IntersectionObserver(callback, options);
@@ -58,8 +58,8 @@ export default function () {
 				element.children[element.children.length-1].classList.add("duration-500")
 			
 				index < refs.length-1 
-					? element.children[element.children.length-1].classList.add( index%2==0? "translate-x-[100vw]":"-translate-x-[100vw]")
-					: element.children[element.children.length-1].classList.add( "translate-y-[100vw]")
+					? element.children[element.children.length-1].classList.add( index%2==0? "translate-x-[100%]":"-translate-x-[100%]")
+					: element.children[element.children.length-1].classList.add( "translate-y-[100%]")
 
 				element.children[element.children.length-1].classList.add("blur-2xl")
 
