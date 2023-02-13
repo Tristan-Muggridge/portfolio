@@ -21,9 +21,9 @@ export default function () {
 				</a>
 				<div className='h-40 flex flex-col justify-between'>
 				<h3 className='font-semibold text-2xl text-center'>{title}</h3>
-					<div className='text-left md:text-center'>
-						<p>{new Content("Issue Date: ", "発行日：")[language]}{issuedDate}</p>
-						<p>{new Content("Issued By: ", "発行：")[language]}{issuedBy}</p>
+					<div className='text-left font-normal place-self-start mx-auto'>
+						<p><span className="font-semibold">{new Content("Issue Date: ", "発行日：")[language]}</span>{issuedDate}</p>
+						<p><span className="font-semibold">{new Content("Issued By: ", "発行：")[language]}</span>{issuedBy}</p>
 					</div>
 				</div>
 			</div>
