@@ -47,7 +47,7 @@ export default function () {
 				{
 					Certification(
 						new Content("AWS Certified Solutions Architect - Associate", "AWS 認定ソリューションアーキテクト – アソシエイト")[language],
-						new Content("In Progress", "発行日：不明")[language],
+						new Content("In Progress", "不明")[language],
 						new Content("Amazon", "Amazon")[language],
 						aws,
 						""
